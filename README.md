@@ -1,7 +1,7 @@
 # SpringBoot-MultiModule-Template
 Kotlin*SpringBoot CleanArchitecture用のモジュール分割プロジェクトテンプレート
 
-## 参考
+## 参考にしたもの
 * 竹端 尚人さんのブログ
   * [GradleのマルチプロジェクトによるKotlin、Spring Bootでのオニオンアーキテクチャの実現](https://blog.takehata-engineer.com/entry/realizing-an-onion-architecture-in-kotlin-and-spring-boot-with-gradle-multi-project)
 * DDD本
@@ -18,6 +18,7 @@ Kotlin*SpringBoot CleanArchitecture用のモジュール分割プロジェクト
 
 ※定義は自分の言葉なので間違ってる場合ありです。。ツッコミ・議論大歓迎
 
+## メリデメ
 ### マルチプロジェクトにするメリット
 * Domain/Presentation/Infra/Application層間の依存関係を、build.gradleにより明示的に示せる
   * あらかじめ決められた依存関係に違反したコードはそもそもコンパイルできない
@@ -27,4 +28,8 @@ Kotlin*SpringBoot CleanArchitecture用のモジュール分割プロジェクト
 * ライブラリ管理において、どの層で用いるのか気にしないといけない
   * 全モジュールで用いるのか(ルートディレクトリ/build.gradle/subprojectsに記載)
   * 各モジュールのみそれぞれにのみ必要なのか(各モジュールのbuild.graldに記載)
-* Springの仕組み上から、不要な依存関係(Presentation層→Infrastructure層)の追加が必要になる(タケハタさんブログから抜粋) 
+* Springの仕組み上から、不要な依存関係(Presentation層→Infrastructure層)の追加が必要になる(タケハタさんブログから抜粋)
+
+## 何でこれ作ったん？
+* パッとSpringBootのコード書きたくなったときに、SpringInitilizrからの生成だったりパッケージ構成に悩む時間を減らしたい
+* マルチモジュールにしたり層分けたりしなきゃもっとパッとプロジェクト立ち上げられるけど、そのデメリットを受けてでも「このコードは何をするコードか？」を考えながらコード書いていたい。このテンプレートをそのための基盤にしたい
