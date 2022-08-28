@@ -1,5 +1,5 @@
-# SpringBoot-MultiModule-Template
-Kotlin*SpringBoot CleanArchitecture用のモジュール分割プロジェクトテンプレート
+# SpringBoot-OnionArchitecutue-MultiModule-Template
+Kotlin*SpringBoot*OnionArchitecture用のモジュール分割プロジェクトテンプレート
 
 ## 参考にしたもの
 * 竹端 尚人さんのブログ
