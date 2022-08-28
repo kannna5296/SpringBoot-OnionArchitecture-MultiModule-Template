@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository
 @Repository
 class SampleRepository(
     private val sampleJpaRepository: SampleJpaRepository
-): ISampleRepository {
+) : ISampleRepository {
 
     override fun insert(sample: Sample): Sample {
         return sampleJpaRepository.saveAndFlush(SampleJpaEntity(sample)).toDomain()

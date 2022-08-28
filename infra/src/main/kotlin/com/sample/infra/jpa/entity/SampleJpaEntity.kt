@@ -17,12 +17,12 @@ class SampleJpaEntity(
     val name: String? = null,
 ) {
     // DomainEntity -> JpaEntity
-    constructor(sample: Sample) :this(
+    constructor(sample: Sample) : this(
         name = sample.name.value
     )
 
     // JpaEntity -> DomainEntity
-    fun toDomain() :Sample {
+    fun toDomain(): Sample {
         return Sample(
             id = this.id,
             name = Name(name ?: throw Exception())
