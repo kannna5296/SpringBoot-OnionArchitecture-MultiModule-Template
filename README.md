@@ -1,0 +1,2 @@
+# SpringBoot-MuitlModule-Template
+Kotlin*SpringBoot CleanArchitecture用のモジュール分割プロジェクトテンプレート
