@@ -1,4 +1,4 @@
-# SpringBoot-MuitlModule-Template
+# SpringBoot-MultiModule-Template
 Kotlin*SpringBoot CleanArchitecture用のモジュール分割プロジェクトテンプレート
 
 ## 参考
