@@ -11,7 +11,8 @@ import org.springframework.stereotype.Service
 class SampleService(
     private val sampleRepository: ISampleRepository
 ) {
-    fun execute(form: SampleForm): SampleResponse {
+    //例としてInsertを実装
+    fun insert(form: SampleForm): SampleResponse {
         val sample = Sample(
             name = Name(form.name),
         )

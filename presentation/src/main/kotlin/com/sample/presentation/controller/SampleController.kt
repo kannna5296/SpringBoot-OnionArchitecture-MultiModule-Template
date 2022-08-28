@@ -15,6 +15,6 @@ class SampleController(
 
     @PostMapping("/sample")
     fun create(@RequestBody param: SampleForm): ResponseEntity<SampleResponse> {
-        return ResponseEntity.ok(sampleService.execute(param))
+        return ResponseEntity.ok(sampleService.insert(param))
     }
 }
