@@ -1,12 +1,21 @@
 package com.sample.usecase.service
 
+import com.sample.domain.sampledomain.ISampleRepository
+import com.sample.domain.sampledomain.Name
+import com.sample.domain.sampledomain.Sample
 import com.sample.usecase.request.SampleForm
 import com.sample.usecase.response.SampleResponse
 import org.springframework.stereotype.Service
 
 @Service
-class SampleService {
-    fun execute(param: SampleForm): SampleResponse {
-        return SampleResponse(id = 1)
+class SampleService(
+    private val sampleRepository: ISampleRepository
+) {
+    fun execute(form: SampleForm): SampleResponse {
+        val sample = Sample(
+            name = Name(form.name),
+        )
+        val insertedSample = sampleRepository.insert(sample)
+        return SampleResponse(id = insertedSample.id ?: throw Exception())
     }
 }
