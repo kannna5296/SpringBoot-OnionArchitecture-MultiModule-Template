@@ -1,6 +1,4 @@
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter")
-    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin") // Form用のデシリアライズに用いる
     implementation(project(":usecase"))
     implementation(project(":domain"))
