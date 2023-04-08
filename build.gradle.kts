@@ -7,6 +7,7 @@ plugins {
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.spring") version "1.6.21"
     kotlin("plugin.jpa") version "1.6.21"
+    id("org.flywaydb.flyway") version "7.5.2" //flyway導入
 }
 
 group = "com.sample"
@@ -27,6 +28,9 @@ allprojects {
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
+    dependencies {
+        implementation("com.microsoft.sqlserver:mssql-jdbc:11.2.1.jre8") //SQLServerDriver導入
+    }
 }
 
 subprojects {
@@ -48,4 +52,16 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+//flyway接続情報
+flyway {
+    url = "jdbc:sqlserver://localhost:1433;database=sampleDb"
+    user = "sa"
+    password = "Password123"
+}
+
+// DB生成タスク
+task<Exec>("createSqlServerDb") {
+    commandLine ("docker", "exec", "-i", "mssql", "/opt/mssql-tools/bin/sqlcmd", "-U", "sa", "-P", "Password123", "-Q", "CREATE DATABASE sampleDb;")
 }
