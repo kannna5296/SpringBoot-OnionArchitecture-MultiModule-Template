@@ -56,7 +56,7 @@ tasks.withType<Test> {
 
 //flyway接続情報
 flyway {
-    url = "jdbc:sqlserver://localhost:1433;database=sampleDb"
+    url = "jdbc:sqlserver://localhost:1433;database=sampleDb;TrustServerCertificate=True"
     user = "sa"
     password = "Password123"
 }
