@@ -59,6 +59,7 @@ flyway {
     url = "jdbc:sqlserver://localhost:1433;database=sampleDb;TrustServerCertificate=True"
     user = "sa"
     password = "Password123"
+    locations = arrayOf("filesystem:${project.projectDir}/presentation/src/main/resources/db/migration")
 }
 
 // DB生成タスク
