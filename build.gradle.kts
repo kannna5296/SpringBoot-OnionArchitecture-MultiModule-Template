@@ -29,7 +29,7 @@ allprojects {
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
     dependencies {
-        implementation("com.microsoft.sqlserver:mssql-jdbc:11.2.1.jre8") //SQLServerDriver導入
+        implementation("org.postgresql:postgresql:42.5.1")
     }
 }
 
@@ -56,13 +56,13 @@ tasks.withType<Test> {
 
 //flyway接続情報
 flyway {
-    url = "jdbc:sqlserver://localhost:1433;database=sampleDb;TrustServerCertificate=True"
-    user = "sa"
+    url = "jdbc:postgresql://localhost:5432/sampledb"
+    user = "postgres"
     password = "Password123"
     locations = arrayOf("filesystem:${project.projectDir}/presentation/src/main/resources/db/migration")
 }
 
 // DB生成タスク
-task<Exec>("createSqlServerDb") {
-    commandLine ("docker", "exec", "-i", "mssql", "/opt/mssql-tools/bin/sqlcmd", "-U", "sa", "-P", "Password123", "-Q", "CREATE DATABASE sampleDb;")
+task<Exec>("createPostgresDb") {
+    commandLine ("docker", "exec", "-i", "postgresql", "/usr/bin/psql", "-U", "postgres", "-c", "CREATE DATABASE sampleDb;")
 }
