@@ -1,17 +1,12 @@
 version: '3'
 
 services:
-  postgres:
-    image: postgres
-    container_name: postgresql
-    restart: always
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: mssql
     environment:
-      - POSTGRES_PASSWORD=Password123
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Password123
     ports:
-      - '5432:5432'
-
-  adminer:
-    image: adminer
+      - '1433:1433'
     restart: always
-    ports:
-      - '8080:8080'
