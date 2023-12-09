@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS rental (
   book_id INT NOT NULL,
   user_id INT NOT NULL,
   deadline DATETIME NOT NULL,
-  isReturned BIT NOT NULL DEFAULT 0,
+  is_returned BIT NOT NULL DEFAULT 0,
   created_at DATETIME NOT NULL,
   updated_at DATETIME NOT NULL
 );

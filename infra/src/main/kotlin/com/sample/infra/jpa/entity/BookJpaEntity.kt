@@ -1,6 +1,6 @@
 package com.sample.infra.jpa.entity
 
-import com.sample.domain.sampledomain.Book
+import com.sample.domain.book.Book
 import java.time.OffsetDateTime
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
