@@ -6,6 +6,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+    cache-duration: -1
   h2:
     console:
       enabled: true

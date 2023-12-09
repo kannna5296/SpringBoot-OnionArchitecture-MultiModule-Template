@@ -15,11 +15,11 @@ class RentalRegisterService(
 
     fun execute(form: RentalRegisterForm) {
 
-        userRepository.findById(form.userId) ?: throw IllegalArgumentException("存在しないユーザなのでレンタルできません")
+        userRepository.findById(form.userId) ?: throw IllegalArgumentException("user-not-found")
 
-        val book = bookRepository.findById(form.bookId) ?: throw IllegalArgumentException("存在しない書籍なのでレンタルできません")
+        val book = bookRepository.findById(form.bookId) ?: throw IllegalArgumentException("book-not-found")
 
-        if (book.isRental) throw IllegalArgumentException("すでに貸出中なのでレンタルできません")
+        if (book.isRental) throw IllegalArgumentException("already-rentaled")
 
         val rental = Rental(
             userId = form.userId,
