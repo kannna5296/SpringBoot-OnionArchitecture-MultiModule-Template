@@ -1,4 +1,4 @@
-package com.sample.domain.sampledomain
+package com.sample.domain.book
 
 class Book(
     var id: Int? = null,
