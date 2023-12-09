@@ -3,6 +3,13 @@ spring:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:testdb
     username: sa
+  jpa:
+    hibernate:
+      ddl-auto: none
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+    cache-duration: -1
   h2:
     console:
       enabled: true

@@ -7,7 +7,7 @@ plugins {
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.spring") version "1.6.21"
     kotlin("plugin.jpa") version "1.6.21"
-    id("org.flywaydb.flyway") version "7.5.2" //flyway導入
+    id("org.flywaydb.flyway") version "7.5.2" // flyway導入
 }
 
 group = "com.sample"
@@ -37,6 +37,7 @@ subprojects {
     dependencies {
         implementation("org.springframework.boot:spring-boot-starter")
         implementation("org.springframework.boot:spring-boot-starter-web")
+        implementation("org.springframework.data:spring-data-commons:2.7.0") // 3系だとaot.BeanRegistrationAotProcessorがBean登録できず起動できない
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
         testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -54,7 +55,7 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-//flyway接続情報
+// flyway接続情報
 flyway {
     url = "jdbc:postgresql://localhost:5432/sampledb"
     user = "postgres"
@@ -64,5 +65,5 @@ flyway {
 
 // DB生成タスク
 task<Exec>("createPostgresDb") {
-    commandLine ("docker", "exec", "-i", "postgresql", "/usr/bin/psql", "-U", "postgres", "-c", "CREATE DATABASE sampleDb;")
+    commandLine("docker", "exec", "-i", "postgresql", "/usr/bin/psql", "-U", "postgres", "-c", "CREATE DATABASE sampleDb;")
 }
