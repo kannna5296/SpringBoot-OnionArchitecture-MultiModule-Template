@@ -1,5 +1,6 @@
 package com.sample.infra.jpa.entity
 
+import com.sample.domain.sampledomain.Book
 import java.time.OffsetDateTime
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -17,4 +18,9 @@ class BookJpaEntity(
     val author: String? = null,
     val createdAt: OffsetDateTime? = OffsetDateTime.now(),
     val updatedAt: OffsetDateTime? = OffsetDateTime.now(),
-)
+) {
+    constructor(book: Book) : this(
+        name = book.name.value,
+        author = book.author.value,
+    )
+}
