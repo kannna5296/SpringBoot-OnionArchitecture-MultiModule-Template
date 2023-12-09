@@ -37,7 +37,7 @@ subprojects {
     dependencies {
         implementation("org.springframework.boot:spring-boot-starter")
         implementation("org.springframework.boot:spring-boot-starter-web")
-        implementation("org.springframework.data:spring-data-commons:3.2.0")
+        implementation("org.springframework.data:spring-data-commons:3.1.2")
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
         testImplementation("org.springframework.boot:spring-boot-starter-test")
