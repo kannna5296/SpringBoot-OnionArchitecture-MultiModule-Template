@@ -1,4 +1,4 @@
-package com.sample.presentation.controller
+package com.sample.presentation.controller.book
 
 import com.sample.usecase.book.search.BookSearchForm
 import com.sample.usecase.book.search.BookSearchResponse

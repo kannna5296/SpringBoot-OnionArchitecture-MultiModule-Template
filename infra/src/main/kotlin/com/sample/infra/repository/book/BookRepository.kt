@@ -1,4 +1,4 @@
-package com.sample.infra.repository
+package com.sample.infra.repository.book
 
 import com.querydsl.jpa.impl.JPAQueryFactory
 import com.sample.domain.book.Author
