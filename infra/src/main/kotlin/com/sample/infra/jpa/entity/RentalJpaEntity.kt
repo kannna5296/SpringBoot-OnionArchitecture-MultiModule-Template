@@ -1,5 +1,6 @@
 package com.sample.infra.jpa.entity
 
+import com.sample.domain.rental.Rental
 import java.time.OffsetDateTime
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -19,4 +20,11 @@ class RentalJpaEntity(
     val isReturned: Boolean? = null,
     val createdAt: OffsetDateTime? = OffsetDateTime.now(),
     val updatedAt: OffsetDateTime? = OffsetDateTime.now(),
-)
+) {
+    constructor(rental: Rental) : this(
+        bookId = rental.bookId,
+        userId = rental.userId,
+        deadLine = rental.deadline.toOffsetDateTime(),
+        isReturned = false,
+    )
+}
