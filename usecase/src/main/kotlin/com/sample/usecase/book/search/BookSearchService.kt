@@ -13,7 +13,11 @@ class BookSearchService(
     fun execute(form: BookSearchForm, pageable: Pageable): Page<BookSearchResponse> {
 
         // usecase層でやるちぇっくとあればいれる
-        val resultDtoList = sampleRepository.search(form)
+        val resultDtoList = sampleRepository.search(
+            form = form,
+            offset = pageable.offset,
+            limit = pageable.pageSize.toLong()
+        )
 
         val result = resultDtoList.first.map { BookSearchResponse(it) }
 

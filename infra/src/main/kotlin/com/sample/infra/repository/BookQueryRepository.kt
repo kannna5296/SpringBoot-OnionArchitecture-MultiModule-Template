@@ -14,7 +14,7 @@ class BookQueryRepository(
 
     private val book = QBookJpaEntity.bookJpaEntity
 
-    override fun search(form: BookSearchForm): Pair<List<BookSearchDto>, Int> {
+    override fun search(form: BookSearchForm, offset: Long, limit: Long): Pair<List<BookSearchDto>, Long> {
         val query = queryFactory.select(
             book.id,
             book.name,
@@ -33,7 +33,9 @@ class BookQueryRepository(
             query.where(book.author.like("%" + form.author + "%"))
         }
 
-        val fetchResult = query.fetch()
+        val allResultSize = query.fetchCount() // TODO ライブラリ更新
+
+        val fetchResult = query.offset(offset).limit(limit).fetch()
 
         val result = fetchResult.map {
             BookSearchDto(
@@ -43,6 +45,6 @@ class BookQueryRepository(
             )
         }
 
-        return Pair(result, fetchResult.size)
+        return Pair(result, allResultSize)
     }
 }
