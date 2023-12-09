@@ -13,7 +13,7 @@ import javax.persistence.Table
 class BookJpaEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Int? = null,
+    val id: Int? = null,
     val name: String? = null,
     val author: String? = null,
     val createdAt: OffsetDateTime? = OffsetDateTime.now(),

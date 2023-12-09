@@ -1,4 +1,4 @@
-package com.sample.infra.repository
+package com.sample.infra.repository.rental
 
 import com.sample.domain.rental.IRentalRepository
 import com.sample.domain.rental.Rental

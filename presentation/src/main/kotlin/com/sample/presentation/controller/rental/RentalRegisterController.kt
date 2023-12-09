@@ -1,4 +1,4 @@
-package com.sample.presentation.controller
+package com.sample.presentation.controller.rental
 
 import com.sample.usecase.rental.register.RentalRegisterForm
 import com.sample.usecase.rental.register.RentalRegisterService

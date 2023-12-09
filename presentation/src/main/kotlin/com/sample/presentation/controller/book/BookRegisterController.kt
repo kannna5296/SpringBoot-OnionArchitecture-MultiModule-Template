@@ -1,4 +1,4 @@
-package com.sample.presentation.controller
+package com.sample.presentation.controller.book
 
 import com.sample.usecase.book.register.BookRegisterForm
 import com.sample.usecase.book.register.BookRegisterService
