@@ -33,3 +33,20 @@ Kotlin/SpringBoot/OnionArchitecture用のモジュール分割プロジェクト
 ## 何でこれ作ったん？
 * パッとSpringBootのコード書いて検証とかしたくなったときに、SpringInitilizrからの生成だったりパッケージ構成に悩む時間を減らしたい
 * マルチモジュールにしたり層分けたりしなきゃもっとパッとプロジェクト立ち上げられるけど、そのデメリットを受けてでも「このコードは何をするコードか？」を考えながらコード書いていたい。このテンプレートをそのための基盤にしたい
+
+## DB生成~初期データ作成
+
+```
+// Postgres用のDockerコンテナ起動
+docker-compose up -d
+```
+
+```
+// DB作成
+gradle createPostgresDb
+```
+
+```
+// テーブル作成、初期データInsert
+gradle flywayMigrate
+```

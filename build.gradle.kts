@@ -7,7 +7,7 @@ plugins {
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.spring") version "1.6.21"
     kotlin("plugin.jpa") version "1.6.21"
-    id("org.flywaydb.flyway") version "7.5.2" //flyway導入
+    id("org.flywaydb.flyway") version "7.5.2" // flyway導入
 }
 
 group = "com.sample"
@@ -29,7 +29,7 @@ allprojects {
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
     dependencies {
-        implementation("com.microsoft.sqlserver:mssql-jdbc:11.2.1.jre8") //SQLServerDriver導入
+        implementation("org.postgresql:postgresql:42.5.1")
     }
 }
 
@@ -37,6 +37,7 @@ subprojects {
     dependencies {
         implementation("org.springframework.boot:spring-boot-starter")
         implementation("org.springframework.boot:spring-boot-starter-web")
+        implementation("org.springframework.data:spring-data-commons:2.7.0") // 3系だとaot.BeanRegistrationAotProcessorがBean登録できず起動できない
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
         testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -54,15 +55,15 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-//flyway接続情報
+// flyway接続情報
 flyway {
-    url = "jdbc:sqlserver://localhost:1433;database=sampleDb;TrustServerCertificate=True"
-    user = "sa"
+    url = "jdbc:postgresql://localhost:5432/sampledb"
+    user = "postgres"
     password = "Password123"
     locations = arrayOf("filesystem:${project.projectDir}/presentation/src/main/resources/db/migration")
 }
 
 // DB生成タスク
-task<Exec>("createSqlServerDb") {
-    commandLine ("docker", "exec", "-i", "mssql", "/opt/mssql-tools/bin/sqlcmd", "-U", "sa", "-P", "Password123", "-Q", "CREATE DATABASE sampleDb;")
+task<Exec>("createPostgresDb") {
+    commandLine("docker", "exec", "-i", "postgresql", "/usr/bin/psql", "-U", "postgres", "-c", "CREATE DATABASE sampleDb;")
 }
