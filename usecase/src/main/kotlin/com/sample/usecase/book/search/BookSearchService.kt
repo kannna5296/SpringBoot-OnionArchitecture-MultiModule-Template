@@ -1,5 +1,6 @@
 package com.sample.usecase.book.search
 
+import com.sample.usecase.book.IBookQueryRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.Pageable
