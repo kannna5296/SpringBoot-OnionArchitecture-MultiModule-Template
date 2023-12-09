@@ -15,7 +15,7 @@ class ErrorHandler(
     fun handleException(exception: IllegalArgumentException): ResponseEntity<ErrorResponse> {
         exception.printStackTrace()
         val code = exception.message!!
-        val message = messageSource.getMessage(code,null, Locale.getDefault())
+        val message = messageSource.getMessage(code, null, Locale.getDefault())
         val errorResponse = ErrorResponse(code, message)
         return ResponseEntity.badRequest().body(errorResponse)
     }
