@@ -29,7 +29,7 @@ class UserRepository(
     @Transactional
     override fun update(rentalUser: RentalUser) {
         queryFactory.update(user)
-            .set(user.phone, rentalUser.phone.value)
+            .set(user.phone, rentalUser.phone?.value)
             .set(user.mail, rentalUser.mail.value)
             .set(user.updatedAt, OffsetDateTime.now())
             .where(user.id.eq(rentalUser.id))

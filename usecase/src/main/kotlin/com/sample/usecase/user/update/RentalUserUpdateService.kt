@@ -17,7 +17,7 @@ class RentalUserUpdateService(
         val user = repository.findById(userId) ?: throw IllegalArgumentException("user-not-found")
 
         val editedUser = user.copy(
-            phone = Phone(form.phone),
+            phone = form.phone?.let { Phone(it) },
             mail = Mail(form.mail),
         )
 

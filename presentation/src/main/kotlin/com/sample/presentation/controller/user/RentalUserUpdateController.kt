@@ -16,7 +16,7 @@ class RentalUserUpdateController(
 ) {
 
     @PutMapping("/{userId}")
-    fun register(
+    fun update(
         @PathVariable(required = true) userId: String,
         @RequestBody param: RentalUserUpdateForm
     ): ResponseEntity<Void> {
