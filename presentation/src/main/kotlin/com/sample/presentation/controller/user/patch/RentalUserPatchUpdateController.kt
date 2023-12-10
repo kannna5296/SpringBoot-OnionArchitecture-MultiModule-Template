@@ -14,7 +14,6 @@ import javax.json.JsonPatch;
 @RequestMapping("/user")
 class RentalUserPatchUpdateController(
     private val service: RentalUserPatchUpdateService,
-    private val mapper: JsonPatchMapper<RentalUserPatchUpdateForm> // RentalUserを持たせた方がいいかも？？
 ) {
 
     @PatchMapping("/{userId}", consumes = ["application/json-patch+json"])

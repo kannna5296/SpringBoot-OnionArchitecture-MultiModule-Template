@@ -45,7 +45,7 @@ subprojects {
 // https://mvnrepository.com/artifact/javax.json/javax.json-api
         implementation("javax.json:javax.json-api:1.1.4")
 //        implementation("com.github.java-json-tools:json-patch:1.13")
-        implementation("org.glassfish:javax.json:1.1.4")
+        //implementation("org.glassfish:javax.json:1.1.4")
 
         testImplementation("org.springframework.boot:spring-boot-starter-test")
     }
