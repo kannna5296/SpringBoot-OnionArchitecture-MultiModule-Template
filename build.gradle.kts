@@ -40,6 +40,13 @@ subprojects {
         implementation("org.springframework.data:spring-data-commons:2.7.0") // 3系だとaot.BeanRegistrationAotProcessorがBean登録できず起動できない
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+        // https://mvnrepository.com/artifact/com.github.java-json-tools/json-patch
+// https://mvnrepository.com/artifact/javax.json/javax.json-api
+        implementation("javax.json:javax.json-api:1.1.4")
+//        implementation("com.github.java-json-tools:json-patch:1.13")
+        implementation("org.glassfish:javax.json:1.1.4")
+
         testImplementation("org.springframework.boot:spring-boot-starter-test")
     }
 }
