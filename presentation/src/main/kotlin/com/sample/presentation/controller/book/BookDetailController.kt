@@ -17,6 +17,7 @@ class BookDetailController(
     @GetMapping("/{bookId}")
     fun detail(@PathVariable(required = true) bookId: String): ResponseEntity<BookDetailResponse> {
         val result = service.execute(bookId.toInt())
+        //　適当コメント
         return ResponseEntity.ok(result)
     }
 }
