@@ -50,3 +50,7 @@ gradle createPostgresDb
 // テーブル作成、初期データInsert
 gradle flywayMigrate
 ```
+
+## jacoco + CodeCov参考リポジトリ
+
+https://github.com/codecov/example-gradle-multiproject/blob/master/build.gradle

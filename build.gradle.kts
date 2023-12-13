@@ -8,6 +8,7 @@ plugins {
     kotlin("plugin.spring") version "1.6.21"
     kotlin("plugin.jpa") version "1.6.21"
     id("org.flywaydb.flyway") version "7.5.2" // flyway導入
+    id("jacoco")
 }
 
 group = "com.sample"
@@ -23,6 +24,7 @@ allprojects {
     repositories {
         mavenCentral()
     }
+    apply(plugin = "jacoco")
     apply(plugin = "kotlin")
     apply(plugin = "org.jetbrains.kotlin.plugin.spring")
     apply(plugin = "org.springframework.boot")
@@ -68,4 +70,33 @@ flyway {
 // DB生成タスク
 task<Exec>("createPostgresDb") {
     commandLine("docker", "exec", "-i", "postgresql", "/usr/bin/psql", "-U", "postgres", "-c", "CREATE DATABASE sampleDb;")
+}
+
+jacoco {
+    toolVersion = "0.8.5"
+    reportsDir = file("$buildDir/reports/jacoco")
+}
+
+val codeCoverageReport by tasks.registering(JacocoReport::class) {
+    executionData(fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec"))
+
+    subprojects {
+        configure<JavaPluginExtension> {
+            sourceSets {
+                getByName("main") {
+                    // configuration specific to the 'main' source set
+                }
+            }
+        }
+    }
+
+    reports {
+        xml.isEnabled = true
+        html.isEnabled = false
+        csv.isEnabled = false
+    }
+}
+
+tasks.named("codeCoverageReport") {
+    dependsOn(subprojects.map { it.tasks.named("test") })
 }
