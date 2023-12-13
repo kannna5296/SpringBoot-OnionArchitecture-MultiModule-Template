@@ -22,7 +22,7 @@ class RentalUserJpaEntity(
 ) {
     constructor(rentalUser: RentalUser) : this(
         name = rentalUser.name.value,
-        phone = rentalUser.phone.value,
+        phone = rentalUser.phone?.value,
         mail = rentalUser.mail.value,
     )
 }
