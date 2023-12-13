@@ -1,8 +1,11 @@
 name: CI　TEST
-on: [pull_request, push]
-
+on:
+  pull_request:
+    branches:
+      - main
 jobs:
-  test:
+  build:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
 
