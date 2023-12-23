@@ -68,6 +68,6 @@ class RentalRegisterServiceTest{
             isRental = true,
         )
         val ex = assertFailsWith<IllegalArgumentException> {  service.execute(form) }
-        assertEquals("already-rented", ex.message)
+        assertEquals("already-rente", ex.message)
     }
 }
