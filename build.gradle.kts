@@ -8,6 +8,8 @@ plugins {
     kotlin("plugin.spring") version "1.6.21"
     kotlin("plugin.jpa") version "1.6.21"
     id("org.flywaydb.flyway") version "7.5.2" // flyway導入
+
+    jacoco
 }
 
 group = "com.sample"
@@ -69,4 +71,11 @@ flyway {
 // DB生成タスク
 task<Exec>("createPostgresDb") {
     commandLine("docker", "exec", "-i", "postgresql", "/usr/bin/psql", "-U", "postgres", "-c", "CREATE DATABASE sampleDb;")
+}
+
+tasks.test {
+    finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
+}
+tasks.jacocoTestReport {
+    dependsOn(tasks.test) // tests are required to run before generating the report
 }
