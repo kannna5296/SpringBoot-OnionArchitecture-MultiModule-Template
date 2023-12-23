@@ -40,9 +40,10 @@ subprojects {
         implementation("org.springframework.data:spring-data-commons:2.7.0") // 3系だとaot.BeanRegistrationAotProcessorがBean登録できず起動できない
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
         testImplementation("org.springframework.boot:spring-boot-starter-test")
-        testImplementation("io.mockk:mockk:1.12.4")
         testImplementation(kotlin("test"))
+        testImplementation("io.mockk:mockk:1.13.7")
     }
 }
 

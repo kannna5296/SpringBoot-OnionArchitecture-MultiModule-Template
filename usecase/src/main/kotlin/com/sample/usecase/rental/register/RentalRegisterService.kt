@@ -19,7 +19,7 @@ class RentalRegisterService(
 
         val book = bookRepository.findById(form.bookId) ?: throw IllegalArgumentException("book-not-found")
 
-        if (book.isRental) throw IllegalArgumentException("already-rentaled")
+        if (book.isRental) throw IllegalArgumentException("already-rented")
 
         val rental = Rental(
             userId = form.userId,
