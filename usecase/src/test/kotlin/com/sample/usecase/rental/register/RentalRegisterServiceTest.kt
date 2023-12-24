@@ -46,7 +46,7 @@ class RentalRegisterServiceTest {
             id = 1,
             name = Name("name"),
             phone = null,
-            mail = Mail("mail"),
+            mail = Mail("mail@example.com"),
         )
         every { bookRepository.findById(any()) } returns null
         val ex = assertFailsWith<IllegalArgumentException> { service.execute(form) }
@@ -59,7 +59,7 @@ class RentalRegisterServiceTest {
             id = 1,
             name = Name("name"),
             phone = null,
-            mail = Mail("mail"),
+            mail = Mail("mail@example.com"),
         )
         every { bookRepository.findById(any()) } returns Book(
             id = 1,
