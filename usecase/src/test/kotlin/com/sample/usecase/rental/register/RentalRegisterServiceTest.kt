@@ -8,14 +8,14 @@ import com.sample.domain.user.IUserRepository
 import com.sample.domain.user.Mail
 import com.sample.domain.user.Name
 import com.sample.domain.user.RentalUser
-import io.mockk.mockkClass
 import io.mockk.every
+import io.mockk.mockkClass
 import java.time.ZonedDateTime
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
-class RentalRegisterServiceTest{
+class RentalRegisterServiceTest {
 
     private val userRepository = mockkClass(IUserRepository::class)
     private val bookRepository = mockkClass(IBookRepository::class)
@@ -36,7 +36,7 @@ class RentalRegisterServiceTest{
     @Test
     fun `ユーザがいない場合NG`() {
         every { userRepository.findById(any()) } returns null
-        val ex = assertFailsWith<IllegalArgumentException> {  service.execute(form) }
+        val ex = assertFailsWith<IllegalArgumentException> { service.execute(form) }
         assertEquals("user-not-found", ex.message)
     }
 
@@ -46,10 +46,10 @@ class RentalRegisterServiceTest{
             id = 1,
             name = Name("name"),
             phone = null,
-            mail = Mail("mail"),
+            mail = Mail("mail@example.com"),
         )
         every { bookRepository.findById(any()) } returns null
-        val ex = assertFailsWith<IllegalArgumentException> {  service.execute(form) }
+        val ex = assertFailsWith<IllegalArgumentException> { service.execute(form) }
         assertEquals("book-not-found", ex.message)
     }
 
@@ -59,7 +59,7 @@ class RentalRegisterServiceTest{
             id = 1,
             name = Name("name"),
             phone = null,
-            mail = Mail("mail"),
+            mail = Mail("mail@example.com"),
         )
         every { bookRepository.findById(any()) } returns Book(
             id = 1,
@@ -67,7 +67,7 @@ class RentalRegisterServiceTest{
             author = Author("author"),
             isRental = true,
         )
-        val ex = assertFailsWith<IllegalArgumentException> {  service.execute(form) }
+        val ex = assertFailsWith<IllegalArgumentException> { service.execute(form) }
         assertEquals("already-rented", ex.message)
         // コメント
     }
