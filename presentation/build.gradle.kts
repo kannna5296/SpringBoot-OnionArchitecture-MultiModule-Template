@@ -1,3 +1,7 @@
+plugins {
+    jacoco
+}
+
 dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin") // Form用のデシリアライズに用いる
     implementation(project(":usecase"))
@@ -8,3 +12,12 @@ dependencies {
     // 参考 > https://blog.takehata-engineer.com/entry/realizing-an-onion-architecture-in-kotlin-and-spring-boot-with-gradle-multi-project
     runtimeOnly(project(":infra"))
 }
+
+
+tasks.test {
+    finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
+}
+tasks.jacocoTestReport {
+    dependsOn(tasks.test) // tests are required to run before generating the report
+}
+
