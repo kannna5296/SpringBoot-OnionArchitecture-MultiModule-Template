@@ -2,6 +2,7 @@ plugins {
     kotlin("kapt") // kotlin用アノテーションプロセッサ(annotationからクラス自動生成したりする)
     // 入れてビルドするとbuild/generated/フォルダが映える
     // dependencies内でkaptするのに必須
+    jacoco
 }
 
 apply(plugin = "kotlin-kapt") // QEntity生成に必須
@@ -16,4 +17,12 @@ dependencies {
     // infraはドメインに依存
     implementation(project(":domain"))
     implementation(project(":usecase"))
+}
+
+
+tasks.test {
+    finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
+}
+tasks.jacocoTestReport {
+    dependsOn(tasks.test) // tests are required to run before generating the report
 }
