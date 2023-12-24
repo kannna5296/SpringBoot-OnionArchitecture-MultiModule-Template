@@ -73,6 +73,7 @@ task<Exec>("createPostgresDb") {
     commandLine("docker", "exec", "-i", "postgresql", "/usr/bin/psql", "-U", "postgres", "-c", "CREATE DATABASE sampleDb;")
 }
 
+// サブモジュールにあったら要らないかも
 tasks.test {
     finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
 }
