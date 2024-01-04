@@ -13,7 +13,6 @@ dependencies {
     runtimeOnly(project(":infra"))
 }
 
-
 tasks.test {
     finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
 }
@@ -25,4 +24,3 @@ tasks.jacocoTestReport {
         csv.isEnabled = false
     }
 }
-

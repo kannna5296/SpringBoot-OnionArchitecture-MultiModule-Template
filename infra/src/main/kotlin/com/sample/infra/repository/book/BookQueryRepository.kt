@@ -9,16 +9,30 @@ import com.sample.usecase.book.detail.BookDetailRentalDto
 import com.sample.usecase.book.search.BookSearchDto
 import com.sample.usecase.book.search.BookSearchForm
 import org.springframework.stereotype.Repository
+import javax.persistence.EntityManager
 
 @Repository
 class BookQueryRepository(
-    private val queryFactory: JPAQueryFactory
+    private val queryFactory: JPAQueryFactory,
+    private val entityManager: EntityManager,
 ) : IBookQueryRepository {
 
     private val book = QBookJpaEntity.bookJpaEntity
     private val rental = QRentalJpaEntity.rentalJpaEntity
 
     override fun search(form: BookSearchForm, offset: Long, limit: Long): Pair<List<BookSearchDto>, Long> {
+
+        // お試し
+//        val query0 = entityManager.createNativeQuery("SELECT * FROM get_rental_user(:name, :phone)")
+//        query0.setParameter("name", form.name)
+//        query0.setParameter("phone", null)
+//        query0.resultList.forEach {
+//            val array = it as Array<*>
+//            if (array.isEmpty()) return@forEach
+//            println(array[0] as Int)
+//            println(array[1] as String)
+//        }
+
         val query = queryFactory.select(
             book.id,
             book.name,

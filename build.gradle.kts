@@ -31,7 +31,7 @@ allprojects {
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
     dependencies {
-        implementation("com.microsoft.sqlserver:mssql-jdbc:11.2.1.jre8") //SQLServerDriver導入
+        implementation("com.microsoft.sqlserver:mssql-jdbc:11.2.1.jre8") // SQLServerDriver導入
     }
 }
 
@@ -70,7 +70,7 @@ flyway {
 
 // DB生成タスク
 task<Exec>("createSqlServerDb") {
-    commandLine ("docker", "exec", "-i", "mssql", "/opt/mssql-tools/bin/sqlcmd", "-U", "sa", "-P", "Password123", "-Q", "CREATE DATABASE sampleDb;")
+    commandLine("docker", "exec", "-i", "mssql", "/opt/mssql-tools/bin/sqlcmd", "-U", "sa", "-P", "Password123", "-Q", "CREATE DATABASE sampleDb;")
 }
 
 // サブモジュールにあったら要らないかも
