@@ -19,7 +19,6 @@ dependencies {
     implementation(project(":usecase"))
 }
 
-
 tasks.test {
     finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
 }
