@@ -1,21 +1,28 @@
-CREATE TABLE book (
-  id VARCHAR(255) NOT NULL,
-  title VARCHAR(255) NOT NULL,
+CREATE TABLE IF NOT EXISTS book (
+  id SERIAL NOT NULL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
   author VARCHAR(255) NOT NULL,
-  release_date TIMESTAMP,
-  PRIMARY KEY (
-    id
-  )
+  created_at TIMESTAMP NOT NULL,
+  updated_at TIMESTAMP NOT NULL
 );
 
-CREATE TABLE rental (
-  id VARCHAR(255) NOT NULL,
+CREATE TABLE IF NOT EXISTS rental_user (
+  id SERIAL NOT NULL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  phone VARCHAR(255),
+  mail VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP NOT NULL,
+  updated_at TIMESTAMP NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS rental (
+  id SERIAL NOT NULL PRIMARY KEY,
+  book_id INT NOT NULL,
   user_id INT NOT NULL,
-  book_id VARCHAR(255) NOT NULL,
-  rental_date TIMESTAMP NOT NULL,
-  return_deadline TIMESTAMP NOT NULL,
-  PRIMARY KEY (
-    id
-  ),
-  FOREIGN KEY (book_id) REFERENCES book(id)
+  deadline TIMESTAMP NOT NULL,
+  is_returned BOOLEAN NOT NULL DEFAULT false,
+  created_at TIMESTAMP NOT NULL,
+  updated_at TIMESTAMP NOT NULL,
+  FOREIGN KEY (book_id) REFERENCES book(id),
+  FOREIGN KEY (user_id) REFERENCES rental_user(id)
 );
