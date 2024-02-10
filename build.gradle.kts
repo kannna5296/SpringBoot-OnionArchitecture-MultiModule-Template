@@ -46,6 +46,8 @@ subprojects {
         testImplementation("org.springframework.boot:spring-boot-starter-test")
         testImplementation(kotlin("test"))
         testImplementation("io.mockk:mockk:1.13.7")
+
+        implementation("org.springdoc:springdoc-openapi-ui:1.7.0")
     }
 }
 

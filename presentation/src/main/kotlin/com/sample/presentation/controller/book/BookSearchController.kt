@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import io.swagger.v3.oas.annotations.tags.Tag
+import org.springdoc.api.annotations.ParameterObject
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.http.ResponseEntity
@@ -24,8 +25,8 @@ class BookSearchController(private val service: BookSearchService) {
     @ApiResponses(value = [ApiResponse(responseCode = "200", description = "成功")])
     @GetMapping
     fun search(
-        @ModelAttribute form: BookSearchForm,
-        pageable: Pageable
+        @ParameterObject @ModelAttribute form: BookSearchForm,
+        @ParameterObject pageable: Pageable
     ): ResponseEntity<Page<BookSearchResponse>> {
         val result = service.execute(form, pageable)
         return ResponseEntity.ok(result)

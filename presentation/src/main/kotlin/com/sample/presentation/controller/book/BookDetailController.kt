@@ -3,6 +3,7 @@ package com.sample.presentation.controller.book
 import com.sample.usecase.book.detail.BookDetailResponse
 import com.sample.usecase.book.detail.BookDetailService
 import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.Parameter
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import io.swagger.v3.oas.annotations.tags.Tag
@@ -20,7 +21,11 @@ class BookDetailController(private val service: BookDetailService) {
     @Operation(summary = "書籍情報詳細取得API")
     @ApiResponses(value = [ApiResponse(responseCode = "200", description = "成功")])
     @GetMapping("/{bookId}")
-    fun detail(@PathVariable(required = true) bookId: String): ResponseEntity<BookDetailResponse> {
+    fun detail(
+        @Parameter(description = "書籍ID", example = "1")
+        @PathVariable(required = true)
+        bookId: String
+    ): ResponseEntity<BookDetailResponse> {
         val result = service.execute(bookId.toInt())
         return ResponseEntity.ok(result)
     }
