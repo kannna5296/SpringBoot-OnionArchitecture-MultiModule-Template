@@ -26,7 +26,7 @@ data class BookDetailResponse(
                 userId = it.userId.toString(),
                 rentedAt = it.rentedAt.toZonedDateTime(),
                 deadline = it.deadline.toZonedDateTime(),
-                isReturned = it.isReturned,
+                returned = it.isReturned,
             )
         }
     )
@@ -41,5 +41,5 @@ data class BookDetailRentalResponse(
     @Schema(description = "返却期限", example = "2023-01-08")
     val deadline: ZonedDateTime,
     @Schema(description = "返却状況")
-    val isReturned: Boolean,
+    val returned: Boolean,
 )

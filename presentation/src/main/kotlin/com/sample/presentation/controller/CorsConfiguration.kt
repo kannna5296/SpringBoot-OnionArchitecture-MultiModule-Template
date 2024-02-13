@@ -13,7 +13,7 @@ class CorsConfiguration {
         return object : WebMvcConfigurer {
             override fun addCorsMappings(registry: CorsRegistry) {
                 registry
-                    .addMapping("/*")
+                    .addMapping("/**")
                     // TODO Local以外にリリースするときは環境変数等で差し込み
                     .allowedOrigins("http://localhost:5173")
             }
