@@ -12,4 +12,6 @@ data class BookDetailDto(
 data class BookDetailRentalDto(
     val userId: Int,
     val rentedAt: OffsetDateTime,
+    val deadline: OffsetDateTime,
+    val isReturned: Boolean,
 )

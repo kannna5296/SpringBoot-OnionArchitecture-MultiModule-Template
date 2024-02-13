@@ -61,13 +61,17 @@ class BookQueryRepository(
 
         val rentalList = queryFactory.select(
             rental.userId,
-            rental.createdAt
+            rental.createdAt,
+            rental.deadline,
+            rental.isReturned,
         ).from(rental).where(rental.bookId.eq(bookId)).fetch()
 
         val rentalDto = rentalList.map {
             BookDetailRentalDto(
                 userId = it.get(rental.userId)!!,
                 rentedAt = it.get(rental.createdAt)!!,
+                deadline = it.get(rental.deadline)!!,
+                isReturned = it.get(rental.isReturned)!!,
             )
         }
 
