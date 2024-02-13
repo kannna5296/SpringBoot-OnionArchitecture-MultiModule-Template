@@ -11,21 +11,24 @@ data class BookDetailResponse(
     val name: String,
     @Schema(description = "著者名", example = "尾田 栄一郎")
     val author: String,
-    @Schema(description = "レンタル情報")
+    @Schema(description = "レンタル可能")
+    val canRental: Boolean,
+    @Schema(description = "レンタル履歴")
     val rentals: List<BookDetailRentalResponse>,
 ) {
     constructor(dto: BookDetailDto) : this(
         id = dto.id.toString(),
         name = dto.name!!,
         author = dto.author!!,
-        rentals = dto.rentals?.map {
+        canRental = CanRentalConverter.convert(dto.rentals),
+        rentals = dto.rentals.map {
             BookDetailRentalResponse(
                 userId = it.userId.toString(),
                 rentedAt = it.rentedAt.toZonedDateTime(),
                 deadline = it.deadline.toZonedDateTime(),
                 isReturned = it.isReturned,
             )
-        }.orEmpty()
+        }
     )
 }
 

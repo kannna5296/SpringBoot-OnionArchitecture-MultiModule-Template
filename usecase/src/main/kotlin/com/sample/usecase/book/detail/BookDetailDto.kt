@@ -6,7 +6,7 @@ data class BookDetailDto(
     val id: Int?,
     val name: String?,
     val author: String?,
-    val rentals: List<BookDetailRentalDto>?,
+    val rentals: List<BookDetailRentalDto>,
 )
 
 data class BookDetailRentalDto(
