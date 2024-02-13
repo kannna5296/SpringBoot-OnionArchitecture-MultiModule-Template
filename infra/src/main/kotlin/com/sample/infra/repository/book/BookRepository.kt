@@ -9,6 +9,7 @@ import com.sample.infra.jpa.entity.BookJpaEntity
 import com.sample.infra.jpa.entity.QBookJpaEntity
 import com.sample.infra.jpa.entity.QRentalJpaEntity
 import com.sample.infra.jpa.repository.BookJpaRepository
+import com.sample.usecase.book.detail.BookDetailRentalDto
 import org.springframework.stereotype.Repository
 
 @Repository
@@ -29,13 +30,15 @@ class BookRepository(
             book.id,
             book.name,
             book.author,
-            rental.isReturned
         ).from(book)
-            .leftJoin(rental).on(rental.bookId.eq(book.id))
             .where(book.id.eq(bookId)).fetchOne() ?: return null
 
         // rentalれこーどがあるかつfalseのとき
-        val isRental = bookResult.get(rental.isReturned) == false
+        val rentalList = queryFactory.select(
+                rental.isReturned,
+        ).from(rental).where(rental.bookId.eq(bookId)).fetch()
+
+        val isRental =  rentalList.any { it != true }
 
         return Book(
             id = bookResult.get(book.id),
