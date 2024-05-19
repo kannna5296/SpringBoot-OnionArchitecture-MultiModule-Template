@@ -13,3 +13,5 @@ spring:
   h2:
     console:
       enabled: true
+  jackson:
+    time-zone: Asia/Tokyo #リクエストボディ変換には効くがクエリパラメータ変換には効かない
