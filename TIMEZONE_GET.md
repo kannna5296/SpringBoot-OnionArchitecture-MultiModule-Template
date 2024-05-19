@@ -42,7 +42,8 @@ spring:
 
 * http://localhost:8080/test?zonedDateTime=2024-05-18T06:30:00Z 200OK
   * printlnすると→2024-05-18T06:30Z -> UTCのまま！！（上記jacksonの設定は効かない）
-* http://localhost:8080/test?zonedDateTime=2024-05-18T06:30:00+09:00 500NG
+* http://localhost:8080/test?zonedDateTime=2024-05-18T06:30:00%2B09:00
+  * printlnすると→2024-05-18T06:30+09:00
 
 ## WebDataBinderをカスタマイズした時
 
