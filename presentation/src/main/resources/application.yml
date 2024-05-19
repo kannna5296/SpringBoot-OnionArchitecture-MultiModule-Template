@@ -14,5 +14,4 @@ spring:
     console:
       enabled: true
   jackson:
-#    date-format: yyyy-MM-dd HH:mm:ss
-    time-zone: Asia/Tokyo
+    time-zone: Asia/Tokyo #リクエストボディ変換には効くがクエリパラメータ変換には効かない

@@ -18,8 +18,25 @@ data class TestForm(
 )
 ```
 
+## spring.jackson.time-zone指定なし
+
 * http://localhost:8080/test?zonedDateTime=2024-05-18T06:30:00Z 200OK
   * printlnすると→2024-05-18T06:30Z
 * http://localhost:8080/test?zonedDateTime=2024-05-18T06:30:00 500OK
 * http://localhost:8080/test?zonedDateTime=2024-05-18T06:30:00+09:00 500NG
 
+## spring.jackson.time-zone指定あり
+
+️クエリパラメータの日付変換にはspring.jackson.time-zoneは効かない
+-> 時刻で検索かける時は要注意
+
+```application.yaml
+spring:
+  jackson:
+    time-zone: Asia/Tokyo
+```
+
+* http://localhost:8080/test?zonedDateTime=2024-05-18T06:30:00Z 200OK
+  * printlnすると→2024-05-18T06:30Z
+* http://localhost:8080/test?zonedDateTime=2024-05-18T06:30:00 500OK
+* http://localhost:8080/test?zonedDateTime=2024-05-18T06:30:00+09:00 500NG
