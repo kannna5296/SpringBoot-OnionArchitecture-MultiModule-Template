@@ -37,6 +37,6 @@ spring:
 ```
 
 * http://localhost:8080/test?zonedDateTime=2024-05-18T06:30:00Z 200OK
-  * printlnすると→2024-05-18T06:30Z
+  * printlnすると→2024-05-18T06:30Z -> UTCのまま！！（上記jacksonの設定は効かない）
 * http://localhost:8080/test?zonedDateTime=2024-05-18T06:30:00 500OK
 * http://localhost:8080/test?zonedDateTime=2024-05-18T06:30:00+09:00 500NG
