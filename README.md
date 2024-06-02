@@ -50,3 +50,9 @@ gradle createPostgresDb
 // テーブル作成、初期データInsert
 gradle flywayMigrate
 ```
+
+## API仕様書生成
+
+* Local起動で 
+  * http://localhost:8080/swagger-ui/index.html にアクセスするとAPI仕様書が見られます
+  * http://localhost:8080/v3/api-docs.yaml にGETリクエストするとOpenAPI仕様のymlファイルがダウンロードできます
