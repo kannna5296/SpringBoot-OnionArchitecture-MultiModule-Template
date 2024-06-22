@@ -32,7 +32,12 @@ allprojects {
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
     dependencies {
         implementation("org.postgresql:postgresql:42.5.1")
+
+
+
     }
+
+
 }
 
 subprojects {
@@ -48,6 +53,14 @@ subprojects {
         testImplementation("io.mockk:mockk:1.13.7")
 
         implementation("org.springdoc:springdoc-openapi-ui:1.7.0")
+
+        // https://qiita.com/sho03/items/9436b062673f2b11e463
+        testImplementation("io.kotest:kotest-runner-junit5:4.3.1") // for kotest framework
+        testImplementation("io.kotest:kotest-assertions-core:4.3.1") // for kotest core jvm assertions
+        testImplementation("io.kotest:kotest-property:4.3.1") // for kotest property test
+
+        testImplementation("io.kotest:kotest-runner-junit5-jvm:4.3.1")
+        //testImplementation("io.kotest:kotest-runner-console-jvm:4.3.1")
     }
 }
 
